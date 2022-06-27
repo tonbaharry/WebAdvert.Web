@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAdvert1.Web.ServiceClients;
+using WebAdvert1.Web.Services;
 
 namespace WebAdvert1.Web
 {
@@ -42,6 +44,9 @@ namespace WebAdvert1.Web
             {
                 options.LoginPath = "/Accounts/Login";
             });
+
+            services.AddTransient<IFileUploader, S3FileUploader>();
+            services.AddHttpClient<IAdvertApiClient, AdvertApiClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
